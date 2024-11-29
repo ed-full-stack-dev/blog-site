@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                             Subscribe
                         </button>
                     </form>
-                    <p className="mt-4 text-sm">&copy; 2024 HairBetsy. All Rights Reserved.</p>
+                    <p className="mt-4 text-sm">&copy; {new Date().getFullYear()} e-rojas. All rights reserved.</p>
                 </div>
             </div>
         </footer>
