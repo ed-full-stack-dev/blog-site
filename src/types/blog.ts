@@ -2,6 +2,7 @@ interface Blog {
     sys: {
         id: string;
     };
+    slug: string;
     author: string;
     authorImage: {
         url: string;
@@ -11,6 +12,10 @@ interface Blog {
     title: string;
     blogImage: {
         url: string;
+        description: string;
+    };
+    body: {
+        json: any;
     };
     summary: string;
     content: any;
