@@ -3,6 +3,7 @@ import { RICHTEXT_OPTIONS } from '../utils/rich-text-options';
 import { useParams } from 'react-router-dom';
 import { useBlogContent } from '../hooks/blog';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Header from '../components/header';
 
 function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
@@ -37,7 +38,8 @@ function BlogPostDetails() {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             {/* Blog Header Section */}
-            <header className="mb-8">
+            <Header />
+            <header className="mb-8 mt-8">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4">{title}</h1>
                 <div className="flex items-center space-x-4">
                     <img
