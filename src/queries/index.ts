@@ -29,6 +29,9 @@ export const BLOG_QUERY_CONTENT = gql`
 query GetBlogBySlug($slug: String) {
     blogCollection(where: {slug: $slug}) {
       items {
+        sys {
+          id
+        }
         summary
         title
         author
