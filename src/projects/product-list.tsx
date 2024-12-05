@@ -3,7 +3,7 @@ export const ProductList = ({ products, loading }:{products:any, loading:boolean
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product:any) => (
-          <div key={product.id} className="border rounded-md p-4 shadow-md">
+          <div key={product.id} className="border rounded-md p-4 shadow-md flex flex-col justify-around">
             <img
               src={product.image}
               alt={product.title}
