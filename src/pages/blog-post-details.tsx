@@ -25,7 +25,6 @@ function BlogPostDetails() {
         summary,
         body: { json: content }
     } = data.blogCollection.items[0];
-    console.log('id', id);
 
 
     const readTime = calculateReadTime(content);
