@@ -33,7 +33,7 @@ export const ProductListContainer = () => {
             <span className="ml-4 text-xl text-gray-700">Loading products...</span>
           </div>
         ) : (
-          <ProductList products={products.slice(0,5)} loading={loading} />
+          <ProductList products={products.slice(0,4)} loading={loading} />
         )}
       </div>
     );
