@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 
 export const BLOGS_QUERY = gql`
 query{
-    blogCollection(order: date_ASC) {
+    blogCollection(order: date_DESC) {
       items {
         slug
         sys {
