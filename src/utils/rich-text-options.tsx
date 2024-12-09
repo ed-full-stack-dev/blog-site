@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import {  BLOCKS, INLINES,Node  } from "@contentful/rich-text-types";
+import {  Block, BLOCKS, Inline, INLINES,Node } from "@contentful/rich-text-types";
 import { CodeBlock, getLanguageFromCode } from "./code-blocks";
 
 export const RICHTEXT_OPTIONS = {
@@ -21,8 +21,7 @@ export const RICHTEXT_OPTIONS = {
     [BLOCKS.LIST_ITEM]: (node: Node, children: ReactNode) => {
       return <li className="ml-4 mb-2 text-gray-700">{children}</li>;
     },
-    [BLOCKS.PARAGRAPH]: (node: any, children: ReactNode) => {
-        
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => {
       // Concatenate all code segments in the paragraph
       if (node.content.some((content: any) => content.marks?.[0]?.type === "code")) {
         const codeString = node.content

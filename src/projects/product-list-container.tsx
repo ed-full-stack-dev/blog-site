@@ -3,7 +3,7 @@ import { ProductList } from "./product-list";
 
 export const ProductListContainer = () => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
   
     useEffect(() => {
       async function fetchProducts() {
