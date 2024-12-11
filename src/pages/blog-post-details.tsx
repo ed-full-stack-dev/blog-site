@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useBlogPost } from '../hooks/blog';
-// import HelmetComponent from '../components/helmet'; // Import HelmetComponent
+import HelmetComponent from '../components/helmet'; // Import HelmetComponent
 import Header from '../components/header';
 import { HeaderArticle } from '../components/blog-details-section/header-arttilcle';
 import { ArticleBody } from '../components/blog-details-section/article-body';
@@ -39,13 +39,14 @@ function BlogPostDetails() {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             {/* Helmet Metadata */}
-           <meta name='title' property="og:title" content={title} />
-            <meta name='author' property="og:author" content={author} />
-            <meta name='date' property="article:published_time" content={new Date(date).toISOString().split('T')[0]} />
-            <meta name='description' property="og:description" content={metaDescription} />
-            <meta name='image' property="og:image" content={metaImage.url} />
-            <meta property="og:url" content={metaUrl} />
-            <meta property="og:type" content="website" />
+            <HelmetComponent
+                title={`${title} | E-Rojas Blog`}
+                description={metaDescription}
+                image={metaImage.url}
+                url={metaUrl}
+                author={author}
+                datePublished={new Date(date).toISOString()}
+            />
 
             {/* Page Content */}
             <Header />
