@@ -1,6 +1,6 @@
 {
-  "short_name": "e-rojas.io",
-  "name": "e-rojas.io - Blog",
+  "short_name": "e-rojas",
+  "name": "E-Rojas Blog - Web Development, React, and More",
   "icons": [
     {
       "src": "favicon.ico",
@@ -16,10 +16,20 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "maskable_icon.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "description": "Discover articles and tutorials on web development, React, JavaScript, MongoDB, HTML, CSS, and design patterns. Stay updated with E-Rojas Blog.",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US"
 }
