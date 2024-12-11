@@ -12,7 +12,7 @@ interface HelmetProps {
 }
 
 const HelmetComponent: React.FC<HelmetProps> = ({
-    title = 'E-Rojas Blog - Web Development, React, and More', // Default title
+    title = 'Edgar Rojas Blog - Web Development, React', // Default title
     description = 'Explore articles on web development, React, JavaScript, design patterns, and more on E-Rojas.', // Default description
     keywords = 'Web Development, React, JavaScript, MongoDB, HTML, CSS, Design Patterns', // Default keywords
     image = '/home-page-banner.png', // Default image for Open Graph/Twitter
