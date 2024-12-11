@@ -13,7 +13,7 @@ export const RICHTEXT_OPTIONS = {
       );
     },
     [BLOCKS.OL_LIST]: (node: Node, children: ReactNode) => {
-      return <ol className="list-decimal pl-2 md:pl-3">{children}</ol>;
+      return <ol className="list-decimal pl-2 md:pl-3 text-xl font-bold">{children}</ol>;
     },
     [BLOCKS.UL_LIST]: (node: Node, children: ReactNode) => {
       return <ul className="list-disc pl-2 md:pl-3">{children}</ul>;
