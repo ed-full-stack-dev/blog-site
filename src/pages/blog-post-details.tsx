@@ -13,7 +13,7 @@ function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
     const { data, loading, error } = useBlogPost(slug);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading || !data.blogCollection.items.length) return <div>Loading...</div>;
     if (error) return <div>Error! {error.message}</div>;
 
     const {
@@ -45,7 +45,7 @@ function BlogPostDetails() {
                 description={metaDescription}
                 image={metaImage.url}
                 url={metaUrl}
-                author='Edgar Rojas'
+                author={author}
                 datePublished={new Date(date).toISOString()}
             />
 
