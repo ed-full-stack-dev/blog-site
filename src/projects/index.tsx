@@ -11,7 +11,7 @@ function Project({ sysId }:{ sysId: string }) {
       case '3':
         return <div>Project 3</div>;
       default:
-        return <div>No Blog Project to Render</div>;
+        return <hr />
     }
   };
 

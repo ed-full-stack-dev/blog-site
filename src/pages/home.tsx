@@ -4,12 +4,12 @@ import AllBlogsSection from '../components/all-blogs-section';
 import BlogCategories from '../components/blog-categories';
 import FeaturedPostsSection from '../components/featured-posts-section';
 import Footer from '../components/footer';
-import { useBlogs } from '../hooks/blog';
+import { useBlogPosts } from '../hooks/blog';
 
 
 
 function Home() {
-  const { data, loading, error,uniqueTags } = useBlogs();
+  const { data, loading, error,uniqueTags } = useBlogPosts();
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error! ${error.message}</div>;
   const {items} = data.blogCollection;

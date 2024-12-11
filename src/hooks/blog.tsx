@@ -1,44 +1,34 @@
-import { ApolloError, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { BLOG_QUERY_CONTENT, BLOGS_QUERY } from "../queries";
-import Blog from "../types/blog";
+import Blog, { BlogCollection, UseBlogPostResult, UseBlogsResult } from "../types/blog";
 
 
-export const useBlogs = (): {
-    data: {
-        blogCollection: {
-            items: Blog[];
-        };
-    };
-    loading: boolean;
-    error: ApolloError | undefined;
-    uniqueTags: string[];
-} => {
-    const { data, loading, error } = useQuery(BLOGS_QUERY);
-    const uniqueTags: Set<string> = new Set();
-    if (data) {
-        data.blogCollection.items.forEach((blog: Blog) => {
-            blog.tags.forEach((tag) => uniqueTags.add(tag));
-        });
 
-    }
-    return { data, loading, error, uniqueTags: Array.from(uniqueTags) };
+export function useBlogPosts():UseBlogsResult {
+  const { data, loading, error } = useQuery<{blogCollection: BlogCollection}>(BLOGS_QUERY);
+  const uniqueTags: Set<string> = new Set();
+  if (data) {
+      data.blogCollection.items.forEach((blog: Blog) => {
+          blog.tags.forEach((tag) => uniqueTags.add(tag));
+      });
+
+  }
+  return {
+    data: data || { blogCollection: { items: [] } },
+    loading,
+    error,
+    uniqueTags: Array.from(uniqueTags),
+  };
 };
 
-export const useBlogContent = (
+export const useBlogPost = (
     slug: string,
-  ): {
-    data: {
-      blog: Blog;
-      blogCollection: {
-        items: Blog[];
-      };
-    };
-    loading: boolean;
-    error: ApolloError | undefined;
-  } => {
-    const { data, loading, error } = useQuery(BLOG_QUERY_CONTENT, {
+  ): UseBlogPostResult => {
+    const { data, loading, error } = useQuery<{blog: Blog;
+      blogCollection: BlogCollection;}>(BLOG_QUERY_CONTENT, {
       variables: { slug },
     });
   
-    return { data, loading, error };
+    return { data: data || { blog: {} as Blog, blogCollection: { items: [] } }
+      , loading, error };
   };

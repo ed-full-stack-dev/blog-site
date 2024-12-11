@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useBlogContent } from '../hooks/blog';
+import { useBlogPost } from '../hooks/blog';
 import Header from '../components/header';
 import { HeaderArticle } from '../components/blog-details-section/header-arttilcle';
 import { ArticleBody } from '../components/blog-details-section/article-body';
@@ -9,7 +9,7 @@ import { calculateReadTime } from '../utils/calculate-read-time';
 import Projects from '../projects';
 function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
-    const { data, loading, error } = useBlogContent(slug);
+    const { data, loading, error } = useBlogPost(slug);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error! {error.message}</div>;
