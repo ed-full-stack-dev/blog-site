@@ -32,7 +32,7 @@ const HelmetComponent: React.FC<HelmetProps> = ({
             <meta name='author' property="og:author" content={author} />
             <meta name='date' property="article:published_time" content={datePublished} />
             <meta name='description' property="og:description" content={description} />
-            <meta name='image' property="og:image" content={image || '/home-page-banner.png'} />
+            <meta name='image' property="og:image" content={image} />
             <meta property="og:url" content={url} />
             <meta property="og:type" content="website" />
 

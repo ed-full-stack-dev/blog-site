@@ -29,6 +29,7 @@ function BlogPostDetails() {
     } = data.blogCollection.items[0];
 
     const readTime = calculateReadTime(content);
+    console.log('blogImage', blogImage);
 
     // Construct dynamic metadata
     const metaDescription = summary || `Read the latest blog post: ${title}`;
@@ -44,7 +45,7 @@ function BlogPostDetails() {
                 description={metaDescription}
                 image={metaImage.url}
                 url={metaUrl}
-                author={author}
+                author='Edgar Rojas'
                 datePublished={new Date(date).toISOString()}
             />
 
