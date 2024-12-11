@@ -46,6 +46,7 @@ const HelmetComponent: React.FC<HelmetProps> = ({
 
             {/* Favicon */}
             <link rel="icon" href="/favicon.ico" />
+            <link rel="canonical" href={url} />
         </Helmet>
     );
 };
