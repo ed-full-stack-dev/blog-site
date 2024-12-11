@@ -18,7 +18,7 @@ const HelmetComponent: React.FC<HelmetProps> = ({
     image = '/home-page-banner.png', // Default image for Open Graph/Twitter
     url = 'https://e-rojas.io', // Default URL
     author = 'E-Rojas',
-    datePublished = new Date().toISOString()
+    datePublished = new Date().toISOString().split('T')[0]
 }) => {
     return (
         <Helmet>
@@ -28,11 +28,11 @@ const HelmetComponent: React.FC<HelmetProps> = ({
             <meta name="keywords" content={keywords} />
 
             {/* Open Graph Metadata */}
-            <meta property="og:title" content={title} />
-            <meta property="og:author" content={author} />
-            <meta property="og:published_time" content={datePublished} />
-            <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
+            <meta name='title' property="og:title" content={title} />
+            <meta name='author' property="og:author" content={author} />
+            <meta name='date' property="article:published_time" content={datePublished} />
+            <meta name='description' property="og:description" content={description} />
+            <meta name='image' property="og:image" content={image || '/home-page-banner.png'} />
             <meta property="og:url" content={url} />
             <meta property="og:type" content="website" />
 

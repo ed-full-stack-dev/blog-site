@@ -1,11 +1,14 @@
 import React from 'react';
 import MainRouter from './routers/main';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
 
 
   return (
-    <MainRouter />  
+    <HelmetProvider >
+      <MainRouter />
+    </HelmetProvider>
   );
 }
 
