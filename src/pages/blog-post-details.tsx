@@ -32,8 +32,9 @@ function BlogPostDetails() {
 
     // Construct dynamic metadata
     const metaDescription = summary || `Read the latest blog post: ${title}`;
-    const metaImage = blogImage || '/images/default-image.png'; // Fallback to a default image
+    const metaImage = blogImage
     const metaUrl = `https://e-rojas.io/blog/${slug}`;
+
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
@@ -43,6 +44,8 @@ function BlogPostDetails() {
                 description={metaDescription}
                 image={metaImage.url}
                 url={metaUrl}
+                author={author}
+                datePublished={new Date(date).toISOString()}
             />
 
             {/* Page Content */}

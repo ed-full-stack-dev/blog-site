@@ -23,6 +23,8 @@ function Home() {
         keywords="Web Development, React, JavaScript, MongoDB, HTML, CSS, Design Patterns, Blog"
         image="/images/homepage-banner.png" // Ensure the image exists in your public folder
         url="https://e-rojas.io"
+        author="E-Rojas"
+        datePublished={new Date().toISOString()}
       />
       <Header />
       <main>
