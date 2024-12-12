@@ -4,8 +4,9 @@ import AllBlogsSection from '../components/all-blogs-section';
 import BlogCategories from '../components/blog-categories';
 import FeaturedPostsSection from '../components/featured-posts-section';
 import Footer from '../components/footer';
-import HelmetComponent from '../components/helmet'; // Import the reusable HelmetComponent
+// import HelmetComponent from '../components/helmet'; // Import the reusable HelmetComponent
 import { useBlogPosts } from '../hooks/blog';
+import SEO from '../components/SEO';
 
 function Home() {
   const { data, loading, error, uniqueTags } = useBlogPosts();
@@ -17,15 +18,15 @@ function Home() {
 
   return (
     <div className="min-h-screen mx-auto max-w-[1600px] bg-gray-50">
-      <HelmetComponent
-        title="E-Rojas Blog | Explore Web Development, React, and More"
-        description="Discover articles and tutorials on web development, React, JavaScript, MongoDB, HTML, CSS, and design patterns. Stay updated with E-Rojas."
-        keywords="Web Development, React, JavaScript, MongoDB, HTML, CSS, Design Patterns, Blog"
-        image="/images/homepage-banner.png" // Ensure the image exists in your public folder
+      <SEO
+        title="E-Rojas Blog"
+        description="A blog about web development, software engineering, and more."
+        keywords="web development, software engineering, react, javascript"
+        image="https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png"
         url="https://e-rojas.io"
-        author="E-Rojas"
-        datePublished={new Date().toISOString()}
+        datePublished={new Date().toISOString().split('T')[0]}
       />
+
       <Header />
       <main>
         <BlogCategories uniqueTags={uniqueTags} />
