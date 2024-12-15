@@ -7,21 +7,29 @@ import { ArticleBody } from '../components/blog-details-section/article-body';
 import { RelatedArticlesSection } from '../components/blog-details-section/related-articles';
 import { calculateReadTime } from '../utils/calculate-read-time';
 import Projects from '../projects';
-import SEO from '../components/SEO';
+import { useSEO } from '../hooks/use-SEO';
+
 
 function BlogPostDetails() {
   const { slug } = useParams() as { slug: string };
   const { data, loading, error } = useBlogPost(slug);
 
-  // Safely extract blogItems if data exists, even if it won't be used right away
   const blogItems = data?.blogCollection?.items || [];
   const blog = blogItems[0];
 
-  // Hooks must be at the top level
   const readTime = useMemo(() => blog?.body?.json && calculateReadTime(blog.body.json), [blog]);
   const keywords = useMemo(() => blog?.tags?.join(','), [blog]);
 
-  // Conditional returns can now safely follow after the hooks
+  // Call the useSEO hook at the top
+  useSEO({
+    title: blog?.title || 'Default Blog Title',
+    description: blog?.summary || 'Default blog description',
+    keywords: keywords || 'default,keywords',
+    image: blog?.blogImage?.url || '/default-image.jpg',
+    url: `https://e-rojas.io/blog/${slug}`,
+    datePublished: blog?.date ? new Date(blog.date).toISOString().split('T')[0] : '2024-01-01',
+  });
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -57,36 +65,26 @@ function BlogPostDetails() {
   } = blog;
 
   return (
-    <>
-      <SEO
-        title={title || "Default Blog Title"}
-        description={summary || "Default blog description"}
-        keywords={keywords || "default,keywords"}
-        image={blogImage?.url || "/default-image.jpg"}
-        url={`https://e-rojas.io/blog/${slug}`}
-        datePublished={date ? new Date(date).toISOString().split('T')[0] : "2024-01-01"}
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <Header />
+      <HeaderArticle
+        title={title}
+        author={author}
+        authorImage={authorImage?.url}
+        date={date}
+        readTime={readTime}
       />
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <Header />
-        <HeaderArticle
-          title={title}
-          author={author}
-          authorImage={authorImage?.url}
-          date={date}
-          readTime={readTime}
-        />
-        <ArticleBody
-          blogImage={blogImage}
-          summary={summary}
-          content={content}
-          tags={tags}
-        />
-        <Projects sysId={id} />
-        <React.Suspense fallback={<div>Loading related articles...</div>}>
-          <RelatedArticlesSection />
-        </React.Suspense>
-      </div>
-    </>
+      <ArticleBody
+        blogImage={blogImage}
+        summary={summary}
+        content={content}
+        tags={tags}
+      />
+      <Projects sysId={id} />
+      <React.Suspense fallback={<div>Loading related articles...</div>}>
+        <RelatedArticlesSection />
+      </React.Suspense>
+    </div>
   );
 }
 

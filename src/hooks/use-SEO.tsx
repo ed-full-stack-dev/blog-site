@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-interface SEOProps {
-  title: string;
-  description: string;
-  keywords: string;
-  image: string;
-  url: string;
-  datePublished: string;
+interface UseSEOParams {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  url?: string;
+  datePublished?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, datePublished }) => {
+export const useSEO = (params?: Partial<UseSEOParams>) => {
+  const {
+    title = "E-Rojas Blog",
+    description = "A blog about web development, software engineering, and more.",
+    keywords = "web development, software engineering, react, javascript",
+    image = "https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png",
+    url = "https://e-rojas.io",
+    datePublished = new Date().toISOString().split('T')[0],
+  } = params || {}; // Default to an empty object if no params are provided
+
   useEffect(() => {
     document.title = title;
 
@@ -20,7 +29,6 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, dat
       { property: 'og:image:height', content: '630' },
       { name: 'image', property: 'og:image', content: image },
       { name: 'title', property: 'og:title', content: title },
-      { name: 'author', property: 'og:author', content: 'Edgar Rojas' },
       { name: 'date', property: 'article:published_time', content: datePublished },
       { name: 'description', property: 'og:description', content: description },
       { property: 'og:url', content: url },
@@ -32,18 +40,18 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, dat
     ];
 
     metaTags.forEach(({ name, property, content }) => {
-        const selector = name ? `meta[name="${name}"]` : `meta[property="${property}"]`;
-        let metaTag = document.querySelector(selector) as HTMLMetaElement;
-        if (metaTag) {
-          metaTag.setAttribute('content', content);
-        } else {
-          metaTag = document.createElement('meta');
-          if (name) metaTag.name = name;
-          if (property) metaTag.setAttribute('property', property);
-          metaTag.content = content;
-          document.head.appendChild(metaTag);
-        }
-      });
+      const selector = name ? `meta[name="${name}"]` : `meta[property="${property}"]`;
+      let metaTag = document.querySelector(selector) as HTMLMetaElement;
+      if (metaTag) {
+        metaTag.setAttribute('content', content);
+      } else {
+        metaTag = document.createElement('meta');
+        if (name) metaTag.name = name;
+        if (property) metaTag.setAttribute('property', property);
+        metaTag.content = content;
+        document.head.appendChild(metaTag);
+      }
+    });
 
     const linkCanonical = document.querySelector('link[rel="canonical"]');
     if (linkCanonical) {
@@ -63,8 +71,4 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, dat
       document.head.appendChild(link);
     }
   }, [title, description, keywords, image, url, datePublished]);
-
-  return null;
 };
-
-export default SEO;
