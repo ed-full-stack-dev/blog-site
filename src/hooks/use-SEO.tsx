@@ -17,11 +17,19 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
     image = "https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png",
     url = "https://e-rojas.io",
     datePublished = new Date().toISOString().split('T')[0],
-  } = params || {}; // Default to an empty object if no params are provided
+  } = params || {};
 
   useEffect(() => {
+    // Remove all existing SEO-related meta tags
+    const existingMetaTags = document.querySelectorAll(
+      'meta[name="description"], meta[name="keywords"], meta[property^="og:"], meta[name^="twitter:"], link[rel="canonical"]'
+    );
+    existingMetaTags.forEach((tag) => tag.parentNode?.removeChild(tag));
+
+    // Set document title
     document.title = title;
 
+    // Define new meta tags
     const metaTags = [
       { name: 'description', content: description },
       { name: 'keywords', content: keywords },
@@ -39,13 +47,10 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
       { name: 'twitter:image', content: image },
     ];
 
+    // Add new meta tags
     metaTags.forEach(({ name, property, content }) => {
-      const selector = name ? `meta[name="${name}"]` : `meta[property="${property}"]`;
-      let metaTag = document.querySelector(selector) as HTMLMetaElement;
-      if (metaTag) {
-        metaTag.setAttribute('content', content);
-      } else {
-        metaTag = document.createElement('meta');
+      if (content) {
+        const metaTag = document.createElement('meta');
         if (name) metaTag.name = name;
         if (property) metaTag.setAttribute('property', property);
         metaTag.content = content;
@@ -53,13 +58,25 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
       }
     });
 
-    // Always update the canonical link
+    // Add or update the canonical link
     let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!linkCanonical) {
-      linkCanonical = document.createElement('link') as HTMLLinkElement;
+      linkCanonical = document.createElement('link');
       linkCanonical.rel = 'canonical';
       document.head.appendChild(linkCanonical);
     }
-    linkCanonical.setAttribute('href', url); // Ensure the correct URL is set
+    linkCanonical.setAttribute('href', url);
+
+    // Cleanup: Remove tags added by this hook on unmount
+    return () => {
+      metaTags.forEach(({ name, property }) => {
+        const selector = name ? `meta[name="${name}"]` : `meta[property="${property}"]`;
+        const metaTag = document.querySelector(selector);
+        if (metaTag) metaTag.parentNode?.removeChild(metaTag);
+      });
+
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) canonicalLink.parentNode?.removeChild(canonicalLink);
+    };
   }, [title, description, keywords, image, url, datePublished]);
 };
