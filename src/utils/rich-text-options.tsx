@@ -22,6 +22,24 @@ export const RICHTEXT_OPTIONS = {
       return <li className="ml-4 mb-2 text-gray-700">{children}</li>;
     },
     [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => {
+      const nodeHasVideoLink = node?.content.find(
+        (content: any) => content.nodeType === "hyperlink"
+      );
+      if (nodeHasVideoLink) {
+        const videoId = nodeHasVideoLink?.data.uri.split("youtu.be/")[1];
+        return (
+          <div className="vlog">
+            <iframe
+              className=""
+              title="Tutorial Video"
+              // width="560"
+              // height="315"
+              src={`https://www.youtube.com/embed/${videoId}`}
+              allowFullScreen
+            ></iframe>
+          </div>
+        );
+      }
       // Concatenate all code segments in the paragraph
       if (node.content.some((content: any) => content.marks?.[0]?.type === "code")) {
         const codeString = node.content
