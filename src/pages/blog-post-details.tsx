@@ -22,6 +22,7 @@ function BlogPostDetails() {
 
     // Call the useSEO hook at the top
     useSEO({
+        author: blog?.author,
         title: blog?.title,
         description: blog?.summary,
         keywords: keywords,

@@ -7,6 +7,7 @@ interface UseSEOParams {
     image?: string;
     url?: string;
     datePublished?: string;
+    author?: string;
 }
 
 export const useSEO = (params?: Partial<UseSEOParams>) => {
@@ -17,6 +18,7 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
         image = "https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png",
         url = "https://e-rojas.io",
         datePublished = new Date().toISOString().split('T')[0],
+        author = "Edgar Rojas",
     } = params || {};
 
     useEffect(() => {
@@ -32,6 +34,7 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
         // Define new meta tags
         const metaTags = [
             { name: 'image', property: 'og:image', content: image },
+            { name: 'author', content: author },
             { name: 'description', content: description },
             { name: 'keywords', content: keywords },
             { property: 'og:image:width', content: '1200' },
@@ -78,5 +81,5 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
             const canonicalLink = document.querySelector('link[rel="canonical"]');
             if (canonicalLink) canonicalLink.parentNode?.removeChild(canonicalLink);
         };
-    }, [title, description, keywords, image, url, datePublished]);
+    }, [title, description, keywords, image, url, datePublished, author]);
 };
