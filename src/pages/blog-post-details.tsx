@@ -17,18 +17,18 @@ function BlogPostDetails() {
     const blogItems = data?.blogCollection?.items || [];
     const blog = blogItems[0];
 
-    const readTime = useMemo(() => blog?.body.json && calculateReadTime(blog.body.json), [blog]);
-    const keywords = useMemo(() => blog?.tags.join(','), [blog]);
+    const readTime = useMemo(() => blog?.body?.json && calculateReadTime(blog.body.json), [blog]);
+    const keywords = useMemo(() => blog?.tags?.join(','), [blog]);
 
     // Call the useSEO hook at the top
     useSEO({
-        author: blog.author,
-        title: blog.title,
-        description: blog.summary,
+        author: blog?.author,
+        title: blog?.title,
+        description: blog?.summary,
         keywords: keywords,
-        image: blog.blogImage?.url,
+        image: blog?.blogImage?.url,
         url: `https://e-rojas.io/blog/${slug}`,
-        datePublished: blog.date ? new Date(blog.date).toISOString().split('T')[0] : '2024-01-01',
+        datePublished: blog?.date ? new Date(blog.date).toISOString().split('T')[0] : '2024-01-01',
     });
 
     if (loading) {
