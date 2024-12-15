@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-interface UseSEOParams {
+interface SEOProps {
     title?: string;
     description?: string;
     keywords?: string;
@@ -10,17 +10,15 @@ interface UseSEOParams {
     author?: string;
 }
 
-export const useSEO = (params?: Partial<UseSEOParams>) => {
-    const {
-        title = "E-Rojas Blog",
-        description = "A blog about web development, software engineering, and more.",
-        keywords = "web development, software engineering, react, javascript",
-        image = "https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png",
-        url = "https://e-rojas.io",
-        datePublished = new Date().toISOString().split('T')[0],
-        author = "Edgar Rojas",
-    } = params || {};
-
+const SEO: React.FC<SEOProps> = ({
+    title = "E-Rojas Blog",
+    description = "A blog about web development, software engineering, and more.",
+    keywords = "web development, software engineering, react, javascript",
+    image = "https://images.ctfassets.net/d502s68us4nn/3kmYZyqYM6yWqNmV7yXba4/8451e85360d6a1d735773daf25a0d3a1/Screenshot_2024-12-11_at_9.32.24_PM.png",
+    url = "https://e-rojas.io",
+    datePublished = new Date().toISOString().split('T')[0],
+    author = "Edgar Rojas",
+}) => {
     useEffect(() => {
         // Remove all existing SEO-related meta tags
         const existingMetaTags = document.querySelectorAll(
@@ -64,9 +62,9 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
         // Add or update the canonical link
         let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
         if (!linkCanonical) {
-          linkCanonical = document.createElement('link');
-          linkCanonical.rel = 'canonical';
-          document.head.appendChild(linkCanonical);
+            linkCanonical = document.createElement('link');
+            linkCanonical.rel = 'canonical';
+            document.head.appendChild(linkCanonical);
         }
         linkCanonical.setAttribute('href', url);
 
@@ -82,4 +80,8 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
             if (canonicalLink) canonicalLink.parentNode?.removeChild(canonicalLink);
         };
     }, [title, description, keywords, image, url, datePublished, author]);
+
+    return null; // This component does not render any UI
 };
+
+export default SEO;

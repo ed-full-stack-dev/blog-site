@@ -32,6 +32,7 @@ export interface UseBlogsResult {
     loading: boolean;
     uniqueTags: string[];
     error: ApolloError | undefined;
+    seo?: React.ReactNode;
 }
 export interface UseBlogPostResult {
     data: {
@@ -40,6 +41,7 @@ export interface UseBlogPostResult {
     };
     error: ApolloError | undefined;
     loading: boolean;
+    seo?: React.ReactNode;
 }
 
 export default Blog;

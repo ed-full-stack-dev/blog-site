@@ -7,29 +7,18 @@ import { ArticleBody } from '../components/blog-details-section/article-body';
 import { RelatedArticlesSection } from '../components/blog-details-section/related-articles';
 import { calculateReadTime } from '../utils/calculate-read-time';
 import Projects from '../projects';
-import { useSEO } from '../hooks/use-SEO';
 
 
 function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
-    const { data, loading, error } = useBlogPost(slug);
+    const { data, loading, error, seo } = useBlogPost(slug);
 
     const blogItems = data?.blogCollection?.items || [];
     const blog = blogItems[0];
 
     const readTime = useMemo(() => blog?.body?.json && calculateReadTime(blog.body.json), [blog]);
-    const keywords = useMemo(() => blog?.tags?.join(','), [blog]);
 
-    // Call the useSEO hook at the top
-    useSEO({
-        author: blog?.author,
-        title: blog?.title,
-        description: blog?.summary,
-        keywords: keywords,
-        image: blog?.blogImage?.url,
-        url: `https://e-rojas.io/blog/${slug}`,
-        datePublished: blog?.date ? new Date(blog.date).toISOString().split('T')[0] : '2024-01-01',
-    });
+
 
     if (loading) {
         return (
@@ -66,6 +55,8 @@ function BlogPostDetails() {
     } = blog;
 
     return (
+        <>
+        {seo}
         <div className="max-w-4xl mx-auto px-4 py-8">
             <Header />
             <HeaderArticle
@@ -86,6 +77,7 @@ function BlogPostDetails() {
                 <RelatedArticlesSection />
             </React.Suspense>
         </div>
+        </>
     );
 }
 
