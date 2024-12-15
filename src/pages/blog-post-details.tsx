@@ -7,6 +7,7 @@ import { ArticleBody } from '../components/blog-details-section/article-body';
 import { RelatedArticlesSection } from '../components/blog-details-section/related-articles';
 import { calculateReadTime } from '../utils/calculate-read-time';
 import Projects from '../projects';
+import SEO from '../components/SEO';
 
 function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
@@ -31,25 +32,35 @@ function BlogPostDetails() {
 
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
-            {/* Page Content */}
-            <Header />
-            <HeaderArticle
+        <>
+            <SEO
                 title={title}
-                author={author}
-                authorImage={authorImage.url}
-                date={date}
-                readTime={readTime}
+                description={summary}
+                keywords={tags.join(',')}
+                image={blogImage.url}
+                url={`https://e-rojas.io/blog/${slug}`}
+                datePublished={new Date(date).toISOString().split('T')[0]}
             />
-            <ArticleBody
-                blogImage={blogImage}
-                summary={summary}
-                content={content}
-                tags={tags}
-            />
-            <Projects sysId={id as string} />
-            <RelatedArticlesSection />
-        </div>
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                {/* Page Content */}
+                <Header />
+                <HeaderArticle
+                    title={title}
+                    author={author}
+                    authorImage={authorImage.url}
+                    date={date}
+                    readTime={readTime}
+                />
+                <ArticleBody
+                    blogImage={blogImage}
+                    summary={summary}
+                    content={content}
+                    tags={tags}
+                />
+                <Projects sysId={id as string} />
+                <RelatedArticlesSection />
+            </div>
+        </>
     );
 }
 
