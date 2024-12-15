@@ -1,53 +1,74 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useBlogPost } from '../hooks/blog';
-import Header from '../components/header';
-import { HeaderArticle } from '../components/blog-details-section/header-arttilcle';
 import { ArticleBody } from '../components/blog-details-section/article-body';
+import { HeaderArticle } from '../components/blog-details-section/header-arttilcle';
 import { RelatedArticlesSection } from '../components/blog-details-section/related-articles';
-import { calculateReadTime } from '../utils/calculate-read-time';
-import Projects from '../projects';
+import Header from '../components/header';
 import SEO from '../components/SEO';
+import { useBlogPost } from '../hooks/blog';
+import Projects from '../projects';
+import { calculateReadTime } from '../utils/calculate-read-time';
+
 
 function BlogPostDetails() {
     const { slug } = useParams() as { slug: string };
     const { data, loading, error } = useBlogPost(slug);
 
-    if (loading || !data.blogCollection.items.length) return <div>Loading...</div>;
-    if (error) return <div>Error! {error.message}</div>;
+    const blogItems = data?.blogCollection?.items || [];
+    const blog = blogItems[0];
+    const content = blog?.body?.json;
+
+    const tags = useMemo(() => blog?.tags || [], [blog]);
+
+    const readTime = useMemo(() => calculateReadTime(content), [content]);
+    const keywords = useMemo(() => tags.join(','), [tags]);
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <div className="loader"></div>
+                <p>Loading blog post...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="text-center text-red-500">
+                <h2>Error Loading Blog</h2>
+                <p>{error.message}</p>
+            </div>
+        );
+    }
+
+    if (!blogItems.length) return <div>No blog post found.</div>;
 
     const {
         author,
         sys: { id },
         authorImage,
         date,
-        tags,
         title,
         blogImage,
         summary,
-        body: { json: content }
-    } = data.blogCollection.items[0];
-
-    const readTime = calculateReadTime(content);
-
+    } = blog;
 
     return (
         <>
             <SEO
                 title={title}
                 description={summary}
-                keywords={tags.join(',')}
-                image={blogImage.url}
+                keywords={keywords}
+                image={blogImage?.url}
                 url={`https://e-rojas.io/blog/${slug}`}
                 datePublished={new Date(date).toISOString().split('T')[0]}
             />
             <div className="max-w-4xl mx-auto px-4 py-8">
-                {/* Page Content */}
                 <Header />
                 <HeaderArticle
                     title={title}
                     author={author}
-                    authorImage={authorImage.url}
+                    authorImage={authorImage?.url}
                     date={date}
                     readTime={readTime}
                 />
@@ -57,8 +78,10 @@ function BlogPostDetails() {
                     content={content}
                     tags={tags}
                 />
-                <Projects sysId={id as string} />
-                <RelatedArticlesSection />
+                <Projects sysId={id} />
+                <React.Suspense fallback={<div>Loading related articles...</div>}>
+                    <RelatedArticlesSection />
+                </React.Suspense>
             </div>
         </>
     );
