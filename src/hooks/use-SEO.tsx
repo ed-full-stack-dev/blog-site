@@ -58,14 +58,14 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
       }
     });
 
-    // Add or update the canonical link
-    let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!linkCanonical) {
-      linkCanonical = document.createElement('link');
-      linkCanonical.rel = 'canonical';
-      document.head.appendChild(linkCanonical);
-    }
-    linkCanonical.setAttribute('href', url);
+    // // Add or update the canonical link
+    // let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    // if (!linkCanonical) {
+    //   linkCanonical = document.createElement('link');
+    //   linkCanonical.rel = 'canonical';
+    //   document.head.appendChild(linkCanonical);
+    // }
+    // linkCanonical.setAttribute('href', url);
 
     // Cleanup: Remove tags added by this hook on unmount
     return () => {
