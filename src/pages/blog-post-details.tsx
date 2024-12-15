@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useBlogPost } from '../hooks/blog';
-import HelmetComponent from '../components/helmet'; // Import HelmetComponent
 import Header from '../components/header';
 import { HeaderArticle } from '../components/blog-details-section/header-arttilcle';
 import { ArticleBody } from '../components/blog-details-section/article-body';
@@ -29,26 +28,10 @@ function BlogPostDetails() {
     } = data.blogCollection.items[0];
 
     const readTime = calculateReadTime(content);
-    console.log('blogImage', blogImage);
-
-    // Construct dynamic metadata
-    const metaDescription = summary || `Read the latest blog post: ${title}`;
-    const metaImage = blogImage
-    const metaUrl = `https://e-rojas.io/blog/${slug}`;
 
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
-            {/* Helmet Metadata */}
-            <HelmetComponent
-                title={`${title} | E-Rojas Blog`}
-                description={metaDescription}
-                image={metaImage.url}
-                url={metaUrl}
-                author={author}
-                datePublished={new Date(date).toISOString()}
-            />
-
             {/* Page Content */}
             <Header />
             <HeaderArticle
