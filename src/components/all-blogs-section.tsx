@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Pagination } from "semantic-ui-react";
+import Pagination from "@mui/material/Pagination";
 import BlogCard from "./blog-card";
 import { FeaturedPostsSectionProps } from "./featured-posts-section";
-
 
 const POSTS_PER_PAGE = 4;
 
@@ -13,8 +12,8 @@ function AllBlogsSection({ posts }: FeaturedPostsSectionProps) {
   const endIndex = startIndex + POSTS_PER_PAGE;
   const displayedPosts = posts.slice(startIndex, endIndex);
 
-  const handlePageChange = (e: React.MouseEvent<HTMLAnchorElement>, { activePage }: any) => {
-    setActivePage(activePage);
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setActivePage(page);
   };
 
   return (
@@ -29,16 +28,18 @@ function AllBlogsSection({ posts }: FeaturedPostsSectionProps) {
         ))}
       </div>
 
-      <Pagination
-        activePage={activePage}
-        totalPages={Math.ceil(posts.length / POSTS_PER_PAGE)}
-        onPageChange={handlePageChange}
-        siblingRange={1}
-        boundaryRange={1}
-      />
+      <div className="flex justify-center">
+        <Pagination
+          count={Math.ceil(posts.length / POSTS_PER_PAGE)}
+          page={activePage}
+          onChange={handlePageChange}
+          siblingCount={1}
+          boundaryCount={1}
+          color="primary"
+        />
+      </div>
     </div>
   );
 }
-
 
 export default AllBlogsSection;
