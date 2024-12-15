@@ -53,22 +53,13 @@ export const useSEO = (params?: Partial<UseSEOParams>) => {
       }
     });
 
-    const linkCanonical = document.querySelector('link[rel="canonical"]');
-    if (linkCanonical) {
-      linkCanonical.setAttribute('href', url);
-    } else {
-      const link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = url;
-      document.head.appendChild(link);
+    // Always update the canonical link
+    let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link') as HTMLLinkElement;
+      linkCanonical.rel = 'canonical';
+      document.head.appendChild(linkCanonical);
     }
-
-    const linkFavicon = document.querySelector('link[rel="icon"]');
-    if (!linkFavicon) {
-      const link = document.createElement('link');
-      link.rel = 'icon';
-      link.href = '/favicon.ico';
-      document.head.appendChild(link);
-    }
+    linkCanonical.setAttribute('href', url); // Ensure the correct URL is set
   }, [title, description, keywords, image, url, datePublished]);
 };
