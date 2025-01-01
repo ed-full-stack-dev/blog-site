@@ -1,26 +1,41 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2020", // Updated to support modern ES2020 features
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
+    ], // Includes browser and ESNext libraries
+    "allowJs": true, // Allow JavaScript files to be part of the project
+    "skipLibCheck": true, // Skip type checks of declaration files
+    "strict": true, // Enable all strict type-checking options
+    "noEmit": true, // Prevent emitting compiled files
+    "esModuleInterop": true, // Enable interop with CommonJS modules
+    "module": "esnext", // Use ESNext module system
+    "moduleResolution": "node", // Use Node.js module resolution
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Enforces isolated modules
+    "jsx": "preserve", // Use React JSX runtime (Next.js uses React 17+ runtime)
+    "incremental": true, // Enable incremental compilation
+    "forceConsistentCasingInFileNames": true, // Enforce consistent file casing
+    "plugins": [
+      {
+        "name": "next" // Next.js specific plugin for TypeScript
+      }
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "paths": {
+      "@/*": [
+        "./*"
+      ] // Path aliasing
+    }
   },
   "include": [
-    "src"
-  ]
+    "next-env.d.ts", // Include Next.js environment types
+    "**/*.ts", // Include TypeScript files
+    "**/*.tsx", // Include React TypeScript files
+    ".next/types/**/*.ts" // Include Next.js types
+  ],
+  "exclude": [
+    "node_modules"
+  ] // Exclude node_modules
 }

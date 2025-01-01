@@ -1,62 +1,36 @@
 {
-  "name": "my-blog-template",
+  "name": "blog-site-project",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@apollo/client": "^3.12.3",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.2.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.2",
-    "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.2",
-    "graphql": "^16.9.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-router-dom": "^7.0.2",
-    "react-scripts": "^5.0.1",
-    "react-syntax-highlighter": "^15.6.1",
-    "typescript": "^5.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "graphql": "^16.10.0",
+    "next": "15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "ajv": "^8.17.1",
-    "ajv-keywords": "^5.1.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "react-scripts": "5.0.1",
-    "tailwindcss": "^3.4.15",
-    "typescript": "4.9.5",
-    "web-vitals": "^4.2.4"
+    "eslint": "^9",
+    "eslint-config-next": "15.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
