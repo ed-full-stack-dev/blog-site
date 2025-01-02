@@ -21,7 +21,7 @@ function Header() {
             width={200}
             height={60}
             priority
-            className="object-contain w-auto h-auto"
+            className="object-contain h-auto"
           />
         </div>
       </Link>
