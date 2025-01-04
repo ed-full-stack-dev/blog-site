@@ -26,3 +26,6 @@
 .iframe-container {
   @apply bg-slate-50 rounded-lg  flex justify-center items-center py-2 px-1 mt-4 w-auto h-auto;
 }
+.user--avatar {
+  @apply rounded-full mr-5;
+}

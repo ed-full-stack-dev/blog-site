@@ -56,7 +56,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 alt={author}
                 width={32}
                 height={32}
-                className="rounded-full"
+                className="user--avatar"
               />
             )}
             <span className="text-sm text-gray-500">{author}</span>

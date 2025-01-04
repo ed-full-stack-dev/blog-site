@@ -1,6 +1,5 @@
 import ApolloProvider from "@/lib/ApolloProvider";
 import "../styles/globals.css";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 export default function RootLayout({
@@ -14,8 +13,7 @@ export default function RootLayout({
       </head>
       <body>
         <ApolloProvider>
-         <Header />
-          <div className="container mx-auto p-4">{children}</div>
+          <div className=" max-w-[1600px] mx-auto ">{children}</div>
           <Footer />
           </ApolloProvider>
       </body>
