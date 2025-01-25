@@ -1,8 +1,9 @@
 import { useQuery } from "@apollo/client";
 import client from "@/lib/apollo-client";
 // import Blog, { BlogCollection, UseBlogPostResult, UseBlogsResult } from "../types/blog";
-import { BLOG_QUERY_CONTENT, BLOGS_QUERY } from "@/queries";
+import { BLOG_QUERY_CONTENT, BLOGS_QUERY, PROJECTS_QUERY } from "@/queries";
 import Blog, { BlogCollection, UseBlogPostResult, UseBlogsResult } from "@/types/blog";
+import { ProjectsCollection } from "@/types/project";
 
 
 
@@ -22,6 +23,11 @@ export async function fetchBlogPost(slug: string): Promise<Blog | undefined> {
     console.error("Error fetching blog post:", error);
     return undefined; // Return undefined if there's an error
   }
+}
+
+export function useProjects() {
+  const { data, loading, error } = useQuery<{projectsCollection: ProjectsCollection;}>(PROJECTS_QUERY);
+  return { data, loading, error };
 }
 export function useBlogPosts(): UseBlogsResult {
   const { data, loading, error } = useQuery<{ blogCollection: BlogCollection }>(BLOGS_QUERY);

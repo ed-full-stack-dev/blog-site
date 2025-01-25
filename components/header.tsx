@@ -21,7 +21,7 @@ function Header() {
             width={200}
             height={60}
             priority
-            className="object-contain h-auto"
+            className="object-contain h-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
           />
         </div>
       </Link>
@@ -43,12 +43,24 @@ function Header() {
             <Link
               href="/blog"
               className={` ${isActive("/blog")
-                  ? "text-blue-600 font-semibold"
-                  : "text-gray-700"
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700"
                 }`}
               aria-label="Blogs"
             >
               Blog
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/portfolio"
+              className={` ${isActive("/portfolio")
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700"
+                }`}
+              aria-label="Portfolio"
+            >
+              Portfolio
             </Link>
           </li>
         </ul>
