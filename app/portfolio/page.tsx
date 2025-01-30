@@ -1,9 +1,9 @@
 import React from 'react';
-import Portfolio from '@/app/portfolio/portfolio';
+import PortfolioOverview from '@/app/portfolio/PortfolioOverview';
 
 function PortfolioPage() {
-  return (
-    <Portfolio />
+  return ( 
+    <PortfolioOverview />
   );
 }
 

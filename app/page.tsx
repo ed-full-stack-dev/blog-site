@@ -112,15 +112,15 @@ const VerticalNav = ({ links }: VerticalNavProps) => (
 const Home = () => (
   <main className="min-h-screen bg-gray-300 flex">
     <div className="flex-grow bg-white rounded-lg grid grid-cols-12 gap-4 p-2">
-      <VerticalNav links={[
+      {/* <VerticalNav links={[
         { href: "/blog", title: "Blog" },
         { href: "/portfolio", title: "Portfolio" },
         { href: "/podcast", title: "Podcast", ariaLabel: "Podcast" },
         {href: '/', title: 'Home', ariaLabel: 'Home'} 
-      ]} />
+      ]} /> */}
       <AboutSection />
 
-      <div className="portfolio-content col-span-12 md:col-span-6 rounded-lg    grid grid-cols-12 grid-rows-6 gap-4 justify-center">
+      <div className="portfolio-content col-span-12 md:col-span-7 rounded-lg    grid grid-cols-12 grid-rows-6 gap-4 justify-center">
         <div className="col-span-12 row-span-1 flex flex-col justify-center row-start-2">
           <h1 className="  font-extralight tracking-wider text-6xl md:text-9xl text-black  text-center">Portfolio</h1>
         </div>
