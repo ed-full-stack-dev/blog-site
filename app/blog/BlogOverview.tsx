@@ -1,7 +1,7 @@
-"use client"; // ApolloProvider must be in a Client Component
+"use client";
 import React from "react";
 import { useBlogPosts } from "@/hooks/blog";
-import Loader from "@/components/loader"; // Import the Loader component
+import Loader from "@/components/loader";
 import BlogList from "./BlogList";
 import Show from "@/components/Show";
 

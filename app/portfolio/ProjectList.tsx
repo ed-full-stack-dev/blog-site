@@ -7,17 +7,17 @@ interface ProjectListProps {
 }
 function ProjectList({ projects }: ProjectListProps) {
     return (
-        <div>
-            <div className="flex mt-10 mb-5">
+        <>
+            <section className="flex mt-10 mb-5">
                 <Search placeholder="Search Portfolio" onSearch={() => { }} />
-            </div>
+            </section>
             <hr />
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-11 gap-x-5 py-8 px-5'>
+            <main className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-11 gap-x-5 py-8 px-5'>
                 {projects && projects.map((project: Project) => (
                     <ProjectCard imgHeight='h-96' key={project.slug} project={project} />
                 ))}
-            </div>
-        </div>
+            </main>
+        </>
     );
 }
 

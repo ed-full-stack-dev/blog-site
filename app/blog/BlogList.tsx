@@ -11,13 +11,13 @@ interface BlogListProps {
 function BlogList({ uniqueTags, posts }: BlogListProps) {
     return (
         <div className="flex-grow grid grid-cols-12">
-            <section className="col-span-12">
-                <main>
+            <main className="col-span-12">
+                <>
                     <BlogCategories uniqueTags={uniqueTags} />
                     <FeaturedPostsSection posts={posts?.slice(0, 7)} />
                     <AllBlogsSection posts={posts} />
-                </main>
-            </section>
+                </>
+            </main>
         </div>
     )
 }

@@ -10,17 +10,15 @@ function PortfolioOverview() {
     const projects = data?.projectsCollection.items;
 
     return (
-        <div>
-            <Loader timer={2000}>
-                <div className='max-w-[1200px] m-auto'>
-                    <Show when={!loading} fallback={<div>Loading...</div>}>
-                        <Show when={!error} fallback={<div>Error Loading!</div>}>
-                            <ProjectList projects={projects} />
-                        </Show>
+        <Loader timer={2000}>
+            <div className='max-w-[1200px] m-auto'>
+                <Show when={!loading} fallback={<div>Loading...</div>}>
+                    <Show when={!error} fallback={<div>Error Loading!</div>}>
+                        <ProjectList projects={projects} />
                     </Show>
-                </div>
-            </Loader>
-        </div>
+                </Show>
+            </div>
+        </Loader>
     )
 }
 
