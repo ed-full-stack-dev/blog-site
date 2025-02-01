@@ -29,15 +29,6 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
     </div>
   );
 };
-const NavLink = ({ href, children, ariaLabel }: { href: string; children: React.ReactNode; ariaLabel?: string }) => (
-  <Link
-    href={href}
-    className="hidden md:block transform md:-rotate-90 hover:text-purple-400 font-bold cursor-pointer"
-    aria-label={ariaLabel}
-  >
-    {children}
-  </Link>
-);
 
 const AboutSection = () => (
   <section className="about-section flex relative bg-violet-300 col-span-12 md:col-span-5 rounded-lg">
@@ -93,21 +84,8 @@ interface Link {
   title: string;
   ariaLabel?: string;
 }
-interface VerticalNavProps {
-  links: Link[];
-}
 
-const VerticalNav = ({ links }: VerticalNavProps) => (
-  <section className="vertical-nav col-span-12 md:col-span-1 flex items-center justify-center">
-    <nav className="flex flex-col space-y-12 items-center justify-around flex-grow h-full">
-      {links.map((link) => (
-        <NavLink key={link.title} href={link.href} ariaLabel={link.ariaLabel} >
-          {link.title}
-        </NavLink>
-      ))}
-    </nav>
-  </section>
-);
+
 
 const Home = () => (
   <main className="min-h-screen bg-gray-300 flex">
