@@ -16,7 +16,7 @@ interface SharedCardProps {
     imgHeight?: 'none' | 'h-48' | 'h-74' | 'h-96';
     isFeatured?: boolean;
     hasImage?: boolean;
-    linkPrefix: 'blog' | 'project'; // Determines the URL prefix
+    linkPrefix: 'blog' | 'portfolio'; // Determines the URL prefix
 }
 
 const SharedCard: React.FC<SharedCardProps> = ({

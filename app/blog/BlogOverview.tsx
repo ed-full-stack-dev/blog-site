@@ -11,7 +11,7 @@ const BlogOverview: React.FC = () => {
 
     return (
             <Loader timer={2000} >
-                <div className="min-h-screen mx-auto max-w-[1600px] flex">
+                <div className="min-h-screen mx-auto max-w-[1200px] flex">
                     <Show when={!loading} fallback={<div>Loading...</div>}>
                         <Show when={!error} fallback={<div>Error Loading!</div>}>
                             <BlogList uniqueTags={uniqueTags} posts={items} />

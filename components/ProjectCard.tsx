@@ -23,7 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
             imgHeight={imgHeight}
             isFeatured={isFeatured}
             hasImage={hasImage}
-            linkPrefix="project"
+            linkPrefix="portfolio"
         />
     );
 };
