@@ -43,9 +43,9 @@ const AboutSection = () => (
   <section className="about-section flex relative bg-violet-300 col-span-12 md:col-span-5 rounded-lg">
     {/* Header */}
     <div className="absolute bg-transparent">
-      <span className="absolute top-8 left-12 font-bold">About Me</span>
+      <span className="absolute top-4 left-12 font-bold">About Me</span>
       <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <path d="M0,0 H200 V50 Q200,100 150,100 H0 Z" fill="white" />
+      <path d="M0,0 H200 V20 Q200,70 150,70 H0 Z" fill="white" />
       </svg>
     </div>
 
@@ -112,15 +112,15 @@ const VerticalNav = ({ links }: VerticalNavProps) => (
 const Home = () => (
   <main className="min-h-screen bg-gray-300 flex">
     <div className="flex-grow bg-white rounded-lg grid grid-cols-12 gap-4 p-2">
-      <VerticalNav links={[
+      {/* <VerticalNav links={[
         { href: "/blog", title: "Blog" },
         { href: "/portfolio", title: "Portfolio" },
         { href: "/podcast", title: "Podcast", ariaLabel: "Podcast" },
         {href: '/', title: 'Home', ariaLabel: 'Home'} 
-      ]} />
+      ]} /> */}
       <AboutSection />
 
-      <div className="portfolio-content col-span-12 md:col-span-6 rounded-lg    grid grid-cols-12 grid-rows-6 gap-4 justify-center">
+      <div className="portfolio-content col-span-12 md:col-span-7 rounded-lg    grid grid-cols-12 grid-rows-6 gap-4 justify-center">
         <div className="col-span-12 row-span-1 flex flex-col justify-center row-start-2">
           <h1 className="  font-extralight tracking-wider text-6xl md:text-9xl text-black  text-center">Portfolio</h1>
         </div>

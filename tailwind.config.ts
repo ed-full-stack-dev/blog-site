@@ -9,8 +9,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        ctgp: {
+          'bg-dark': '#1A0223',
+          'bg-midnight': '#1B0031',
+          'accent-pink': '#FF6F61',
+          'accent-orange': '#FF895E',
+          'text-white': '#FFFFFF',
+          'text-gray': '#D1D1D1',
+          'border-lavender': '#6A0DAD',
+          'border-purple': '#9A5BDB',
+        }
       },
     },
   },
