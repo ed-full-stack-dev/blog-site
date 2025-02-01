@@ -10,7 +10,7 @@ const BlogOverview: React.FC = () => {
     const { items } = data?.blogCollection || {};
 
     return (
-            <Loader timer={2000} >
+            <Loader timer={500} >
                 <div className="min-h-screen mx-auto max-w-[1200px] flex">
                     <Show when={!loading} fallback={<div>Loading...</div>}>
                         <Show when={!error} fallback={<div>Error Loading!</div>}>
