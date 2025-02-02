@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
-
 /* Global Font */
 .ctgp-font {
     font-family: "Inconsolata", serif;
@@ -27,38 +26,54 @@
     background-image: url('./assets/pattern-lines.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
 }
 
-.pattern-top::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-image: url('./assets/pattern-squiggly-line-top.svg');
-    background-position: right top;
-    background-repeat: no-repeat;
-    background-size: min(50%, 500px);
+.button-group {
+    display: flex;
+    gap: 1rem;
 }
 
-.pattern-bottom::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-image: url('./assets/pattern-squiggly-line-bottom.svg');
-    background-position: bottom left;
-    background-repeat: no-repeat;
-    background-size: min(50%, 500px);
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.575rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-change {
+    background-color: #6a5bdb;
+    color: white;
+    border: none;
+}
+
+.btn-change:hover {
+    background-color: #594bb8;
+}
+
+.btn-remove {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+}
+
+.btn-remove:hover {
+    background-color: #e55c50;
 }
 
 .content {
     position: relative;
     z-index: 10;
-    width: min(90%,800px);
+    width: min(90%, 800px);
     text-align: center;
     padding: 2rem;
+}
+
+.content__description {
+    color: #8784a4;
+    font-size: 1.25rem;
 }
 
 .content__header-logo {
@@ -74,17 +89,39 @@
     margin-bottom: 1.5rem;
 }
 
-.content__description {
-    color: #8784a4;
-    font-size: 1.25rem;
+.error-icon .default-fill {
+    fill: #8784a4;
+}
+
+.error-icon .default-stroke {
+    stroke: #8784a4;
+}
+
+.error-icon .error-fill {
+    fill: #e16251;
+}
+
+.error-icon .error-stroke {
+    stroke: #e16151;
 }
 
 .form {
     z-index: 10;
-    width: min(70%,500px);
+    width: min(70%, 500px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.form__error {
+    color: #e16151;
+    display: flex;
+    align-items: center;
+}
+
+.form__error span {
+    margin-left: 10px;
+    font-size: 16px;
 }
 
 .form__item {
@@ -93,11 +130,6 @@
     align-items: start;
     min-height: 100px;
     margin: 5px 0;
-   
-}
-
-.form__label {
-    color: white;
 }
 
 .form__item .form__input {
@@ -106,21 +138,79 @@
     background-color: hsla(245, 19%, 35%, 0.13);
     color: hsl(252, 6%, 83%);
     border-radius: 12px;
-    padding: .478rem;
-   
+    padding: 0.478rem;
     height: 3rem;
     outline: none;
     font-size: 1rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(1px);
 }
+
 .form__item .form__input::placeholder {
-    color: hsla(250, 6%, 60%, 0.445); /* Change this to your desired color */
+    color: hsla(250, 6%, 60%, 0.445);
 }
 
 .form__input:focus {
     border: 2px solid #8580b7;
     backdrop-filter: blur(2px);
+}
+
+.form__label {
+    color: white;
+}
+
+.form__upload-wrapper {
+    margin: 2px 0 10px 0;
+}
+
+.form-upload {
+    width: 100%;
+    min-height: 100px;
+    border: 2px dashed #8784a4;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-upload.drag-active {
+    border-color: #ff6f61;
+}
+
+.form-upload-instructions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.form-upload-message {
+    font-size: 0.875rem;
+    color: #d1d1d1;
+}
+
+.form-upload-text {
+    color: #d1d1d1;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.form-upload__message {
+    color: #8784a4;
+    margin-left: 10px;
+}
+
+.form-upload__text {
+    color: #8784a4;
+}
+
+.hidden-input {
+    display: none;
 }
 
 input[type="submit"] {
@@ -139,20 +229,51 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #e16151;
 }
-.form__error {
-    color: #e16151;
+
+.pattern-bottom::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url('./assets/pattern-squiggly-line-bottom.svg');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: min(50%, 500px);
+}
+
+.pattern-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url('./assets/pattern-squiggly-line-top.svg');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: min(50%, 500px);
+}
+
+.upload-image,
+.preview-image {
+    border-radius: 8px;
+}
+
+.upload-label {
     display: flex;
+    flex-direction: column;
     align-items: center;
-}
-.form__error span {
-    margin-left: 10px;
-    font-size: 16px;
+    cursor: pointer;
 }
 
-.error-icon .error-stroke {
-    stroke: #e16151;
+.file-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.error-icon .error-fill {
-    fill: #e1625100;
+.file-preview-icon,
+.file-upload-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
