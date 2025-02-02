@@ -53,7 +53,7 @@
     background-size: min(50%, 500px);
 }
 
-.content, .form {
+.content {
     position: relative;
     z-index: 10;
     width: min(90%,800px);
@@ -77,4 +77,40 @@
 .content__description {
     color: #8784a4;
     font-size: 1.25rem;
+}
+
+.form {
+    z-index: 10;
+    width: min(70%,500px);
+}
+.form__item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: .9rem 0 .9rem 0;
+}
+.form__label {
+    color: white;
+}
+.form__item .form__input {
+    width: 100%;
+    border: 1px solid #4b486a;
+    background-color: hsla(245, 19%, 35%, 0.13);
+    color: hsl(252, 6%, 83%);
+    border-radius: 12px;
+    padding: .478rem;
+    margin-top: .478rem;
+    height: 3rem;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(1px);
+}
+.form__item .form__input::placeholder {
+    color: hsla(250, 6%, 60%, 0.445); /* Change this to your desired color */
+}
+
+.form__input:focus {
+    border: 2px solid #8580b7;
+    backdrop-filter: blur(2px);
 }
