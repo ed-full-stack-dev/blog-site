@@ -11,7 +11,7 @@ interface CtGformProps {
 export default function CtGform({ values, errors, handleChange, handleSubmit }: CtGformProps) {
     return (
         <form className='form' onSubmit={handleSubmit}>
-            <FileUpload handleChange={handleChange} />
+            <FileUpload handleChange={handleChange} errorMessage={errors.file} />
             <FormItemInput
                 value={values.name}
                 onChange={handleChange}

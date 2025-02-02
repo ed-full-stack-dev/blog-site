@@ -3,10 +3,11 @@ import useFileUpload from "@/hooks/projects/useFileUpload";
 import Image from "next/image";
 interface FileUploadProps {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    errorMessage?:string;
 }
 
 
-export function FileUpload({ handleChange }: FileUploadProps) {
+export function FileUpload({ handleChange, errorMessage }: FileUploadProps) {
     const {
         file,
         dragActive,
@@ -33,6 +34,7 @@ export function FileUpload({ handleChange }: FileUploadProps) {
                     ref={fileInputRef}
                     type="file"
                     className="hidden-input"
+                    name="file"
                     onChange={
                         (e) => {
                             handleFileInputChange(e)
@@ -85,8 +87,8 @@ export function FileUpload({ handleChange }: FileUploadProps) {
             </div>
             {/* Additional Instructions */}
             <div className="form-upload-instructions">
-                <ErrorIcon errorFill="default-fill" errorStroke="default-stroke" />
-                <p className="form-upload-message">Upload your photo (JPG or PNG, max size: 500KB).</p>
+                <ErrorIcon errorFill={errorMessage ? "error-fill" : "default-fill"} errorStroke={errorMessage ? "error-stroke" : "default-stroke"} />
+                <p className={`${errorMessage ? 'error': 'form-upload-message'}`}>Upload your photo (JPG or PNG, max size: 500KB).</p>
             </div>
         </div>
     );

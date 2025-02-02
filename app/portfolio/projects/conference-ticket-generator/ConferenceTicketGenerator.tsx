@@ -6,6 +6,7 @@ import useCTGform from '@/hooks/projects/useCTGform';
 import { CTGformState } from '@/types/projects';
 import CtGform from './CtGform';
 import './styles.css';
+import Show from '@/components/Show';
 
 
 export default function ConferenceTicketGenerator() {
@@ -26,13 +27,15 @@ export default function ConferenceTicketGenerator() {
                     Secure your spot at next year&apos;s biggest coding conference.
                 </p>
             </div>
-            {/* Form */}
-            {
+            {/* {
                 isSubmitSuccessful ?
                     (<span className=' text-white'>your ticket!</span>)
                     :
                     (<CtGform values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} />)
-            }
+            } */}
+            <Show when={isSubmitSuccessful} fallback={<CtGform values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} />} >
+                <span className=' text-white'>your ticket!</span>
+            </Show>
         </section>
     );
 }
