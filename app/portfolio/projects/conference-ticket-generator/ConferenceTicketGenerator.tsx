@@ -4,8 +4,12 @@ import Image from 'next/image';
 import Logo from './assets/logo-full.svg';
 import './styles.css';
 import FormItemInput from '@/components/FormItemInput';
+import useCTGform from '@/hooks/projects/useCTGform';
+import { CTGformState } from '@/types/projects';
+
 
 export default function ConferenceTicketGenerator() {
+    const { values, errors, handleChange, handleSubmit } = useCTGform<CTGformState>({ name: '', email: '', githubUser: '' })
     return (
         <section className="ctgp-font _container">
             {/* Background patterns */}
@@ -22,24 +26,31 @@ export default function ConferenceTicketGenerator() {
                     Secure your spot at next year&apos;s biggest coding conference.
                 </p>
             </div>
-            <form className='form'>
+            {/* Form */}
+            <form className='form' onSubmit={handleSubmit}>
                 <FormItemInput
+                    value={values.name}
+                    onChange={handleChange}
                     label='Full Name'
                     placeholder='Full Name'
                     name='name'
-                    errorMessage='Please enter your full name.'
+                    errorMessage={errors.name}
                 />
                 <FormItemInput
+                    value={values.email}
+                    onChange={handleChange}
                     label='Email Address'
                     placeholder='Email Address'
                     name='email'
-                    errorMessage=''
+                    errorMessage={errors.email}
                 />
                 <FormItemInput
+                    value={values.githubUser}
+                    onChange={handleChange}
                     label='Github Username'
                     placeholder='Github Username'
                     name='githubUser'
-                    errorMessage='Please enter your Github username.'
+                    errorMessage={errors.githubUser}
                 />
                 <input type="submit" value='Generate My Ticket' />
             </form>
