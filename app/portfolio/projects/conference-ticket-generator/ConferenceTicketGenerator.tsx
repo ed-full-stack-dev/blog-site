@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Logo from './assets/logo-full.svg';
 import './styles.css';
+import FormItemInput from '@/components/FormItemInput';
 
 export default function ConferenceTicketGenerator() {
     return (
@@ -22,36 +23,29 @@ export default function ConferenceTicketGenerator() {
                 </p>
             </div>
             <form className='form'>
-                <div className="form__item">
-                    <label htmlFor="name" className='form__label'>Full Name</label>
-                    <input type="text" name="name" className="form__input" placeholder="Full Name" />
-                </div>
-                <div className="form__item">
-                    <label htmlFor="email" className='form__label'>Email Address</label>
-                    <input type="text" name="email" className="form__input" placeholder="Email Address" />
-                </div>
-                <div className="form__item">
-                    <label htmlFor="github_username" className='form__label'>Github Username</label>
-                    <input type="text" name="github_username" className="form__input" placeholder="Github Username" />
-                </div>
+                <FormItemInput
+                    label='Full Name'
+                    placeholder='Full Name'
+                    name='name'
+                    errorMessage='Please enter your full name.'
+                />
+                <FormItemInput
+                    label='Email Address'
+                    placeholder='Email Address'
+                    name='email'
+                    errorMessage=''
+                />
+                <FormItemInput
+                    label='Github Username'
+                    placeholder='Github Username'
+                    name='githubUser'
+                    errorMessage='Please enter your Github username.'
+                />
+                <input type="submit" value='Generate My Ticket' />
             </form>
         </section>
     );
 }
-/* 
-<div className="form__item">
-    <label htmlFor="name" className="form__label">Full Name</label>
-    <div className="form__item-content">
-        <input type="text" name="name" className="form__input" placeholder="Full Name" />
-        <div className="form__input-border" />
-    </div>
-    <div className="form__error">
-        <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" viewBox="0 0 16 16">
-            <path stroke="#D1D0D5" strokeLinecap="round" strokeLinejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z" />
-            <path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z" />
-            <path stroke="#D1D0D5" strokeLinecap="round" strokeLinejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042" />
-        </svg>
-        <span>Please enter your full name</span>
-    </div>
-</div>
- */
+
+
+
