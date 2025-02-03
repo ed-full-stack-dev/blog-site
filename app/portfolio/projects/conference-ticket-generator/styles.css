@@ -307,11 +307,6 @@ input[type="submit"]:hover {
     
 }
 
-.ticket__right {
-    width: 70px;
-    background-color: #51e18d;
-    height: 100%;
-}
 
 .ticket-header {
     display: flex;
@@ -327,7 +322,16 @@ input[type="submit"]:hover {
 .ticket-footer {
     display: flex;
     align-items: end;
+    gap: 10px;
 }
 .ticket-avatar {
     border-radius: 10px;
+}
+
+.ticket__right {
+    writing-mode: tb-rl;
+    color: #8784a4;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
 }

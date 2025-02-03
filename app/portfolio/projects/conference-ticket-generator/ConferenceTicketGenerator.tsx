@@ -8,6 +8,9 @@ import CtGform from './CtGform';
 import './styles.css';
 import Show from '@/components/Show';
 import { useEffect, useState } from 'react';
+import { FiGithub } from "react-icons/fi";
+import { generateTicketNumber } from '@/utils/shared';
+
 
 
 export default function ConferenceTicketGenerator() {
@@ -53,11 +56,11 @@ function TicketGenerator({ values }: TicketGeneratorProps) {
             <div className="ticket__left">
                 <div className="ticket-header">
                     <div className="ticket-logo">
-                        <Image src={Logo} width={200} height={200} alt="logo" />
+                        <Image src={Logo} width={250} height={100} alt="logo" />
                     </div>
                     <span className="ticket-date">{`${new Date().toDateString()} / Austin, TX`}</span>
                 </div>
-                <div className="ticket-footer">
+                <div className="ticket-footer fl">
                     {/* Display Avatar */}
                     <Image
                         src={avatar || Logo}
@@ -66,13 +69,14 @@ function TicketGenerator({ values }: TicketGeneratorProps) {
                         alt="avatar"
                         className="ticket-avatar"
                     />
-                    <p className="ticket-username">{values.name}</p>
-                    <p className="ticket-email">{values.email}</p>
-                    <p className="ticket-github">{values.githubUser}</p>
+                   <div className='flex flex-col text-white '>
+                   <p className="ticket-username text-2xl">{values.name}</p>
+                    <p className="ticket-github flex items-center gap-1"><FiGithub /> {values.githubUser}</p>
+                   </div>
                 </div>
             </div>
             <div className="ticket__right">
-                {/* Additional details or design */}
+               <span>{generateTicketNumber()}</span>
             </div>
         </div>
     );
