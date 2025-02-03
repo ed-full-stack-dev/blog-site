@@ -335,3 +335,13 @@ input[type="submit"]:hover {
     font-weight: 400;
     text-align: center;
 }
+
+.main__title--name {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #f37362, #ffffff);
+}
+
+.main__title--email {
+    color: #f37362;
+}
