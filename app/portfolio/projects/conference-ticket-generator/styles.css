@@ -1,1 +1,350 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+/* Global Font */
+.ctgp-font {
+    font-family: "Inconsolata", serif;
+}
+
+/* Container */
+._container {
+    min-height: 80vh;
+    background-image: url('./assets/background-desktop.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+._container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('./assets/pattern-lines.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Patterns */
+.pattern-top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url('./assets/pattern-squiggly-line-top.svg');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: min(50%, 500px);
+}
+
+.pattern-bottom::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url('./assets/pattern-squiggly-line-bottom.svg');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: min(50%, 500px);
+}
+
+/* Content */
+.content {
+    position: relative;
+    z-index: 10;
+    width: min(90%, 800px);
+    text-align: center;
+    padding: 2rem;
+}
+
+.content__header-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.content__title {
+    color: white;
+    font-weight: 900;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.content__description {
+    color: #8784a4;
+    font-size: 1.25rem;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.575rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-change {
+    background-color: #6a5bdb;
+    color: white;
+    border: none;
+}
+
+.btn-change:hover {
+    background-color: #594bb8;
+}
+
+.btn-remove {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+}
+
+.btn-remove:hover {
+    background-color: #e55c50;
+}
+
+/* Form */
+.form {
+    z-index: 10;
+    width: min(70%, 500px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form__error {
+    color: #e16151;
+    display: flex;
+    align-items: center;
+}
+
+.form__error span {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.form__item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    min-height: 100px;
+    margin: 5px 0;
+}
+
+.form__item .form__input {
+    width: 100%;
+    border: 1px solid #4b486a;
+    background-color: hsla(245, 19%, 35%, 0.13);
+    color: hsl(252, 6%, 83%);
+    border-radius: 12px;
+    padding: 0.478rem;
+    height: 3rem;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(1px);
+}
+
+.form__item .form__input::placeholder {
+    color: hsla(250, 6%, 60%, 0.445);
+}
+
+.form__input:focus {
+    border: 2px solid #8580b7;
+    backdrop-filter: blur(2px);
+}
+
+.form__label {
+    color: white;
+}
+
+.form__upload-wrapper {
+    margin: 2px 0 10px 0;
+}
+
+.form-upload {
+    width: 100%;
+    min-height: 100px;
+    border: 2px dashed #8784a4;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-upload.drag-active {
+    border-color: #ff6f61;
+}
+
+.form-upload-instructions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.form-upload-message {
+    font-size: 0.875rem;
+    color: #d1d1d1;
+}
+
+.form-upload-text {
+    color: #d1d1d1;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.form-upload__message {
+    color: #8784a4;
+    margin-left: 10px;
+}
+
+.form-upload__text {
+    color: #8784a4;
+}
+
+.hidden-input {
+    display: none;
+}
+
+input[type="submit"] {
+    background-color: #f57261;
+    color: #0c082b;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    height: 3.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #e16151;
+}
+
+/* Ticket */
+.ticket {
+    background-image: url('./assets/pattern-ticket.svg');
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 230px;
+    margin: 4rem auto 0;
+    background-size: contain;
+    padding: 1.5rem;
+    aspect-ratio: 600 / 280;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.ticket__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.ticket-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.ticket-date {
+    color: #d1d1d1;
+}
+
+.ticket-footer {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+}
+
+.ticket-avatar {
+    border-radius: 10px;
+}
+
+.ticket__right {
+    writing-mode: tb-rl;
+    color: #8784a4;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Miscellaneous */
+.upload-image,
+.preview-image {
+    border-radius: 8px;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.file-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-preview-icon,
+.file-upload-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: #e16151;
+}
+
+.error-icon .default-fill {
+    fill: #8784a4;
+}
+
+.error-icon .default-stroke {
+    stroke: #8784a4;
+}
+
+.error-icon .error-fill {
+    fill: #e16251;
+}
+
+.error-icon .error-stroke {
+    stroke: #e16151;
+}
+
+.main__title--name {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #f37362, #ffffff);
+}
+
+.main__title--email {
+    color: #f37362;
+}
