@@ -32,8 +32,6 @@ export default function ConferenceTicketGenerator() {
                         description={<p className='content__description'>We have emailed your ticket to <span className='main__title--email'>{values.email}</span>  and will send updates in the run up to the event.</p>}
                     />
                 </Show>
-
-
             </div>
             <Show when={isSubmitSuccessful} fallback={<CtGform values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} />} >
                 <TicketGenerator values={values} />

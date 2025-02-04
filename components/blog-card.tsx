@@ -17,7 +17,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   isFeatured = true,
   hasImage = true,
 }) => {
-  const { sys, author, date, title, blogImage: image, summary, authorImage, slug } = blog;
+  const { sys, author, date, title, blogImage: image, summary, slug, authorImage } = blog;
   return (
     <Link
       href={`/blog/${slug}`}
@@ -32,7 +32,6 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <Image
             src={image.url}
             alt={title}
-            priority={isFeatured}
             className={`w-full ${imgHeight} object-cover`}
             width={500}
             height={500}
@@ -52,11 +51,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <div className="flex items-center">
             {authorImage?.url && (
               <Image
+              width={30}
+              height={30}
                 src={authorImage.url}
                 alt={author}
-                width={32}
-                height={32}
-                className="user--avatar"
+                className=' rounded-md mr-2'
               />
             )}
             <span className="text-sm text-gray-500">{author}</span>

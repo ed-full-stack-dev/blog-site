@@ -76,3 +76,23 @@ query GetBlogBySlugAndAllTitles($slug: String) {
   }
 }
 `;
+
+export const PROJECT_QUERY_CONTENT = gql`
+query GetProjectBySlug($slug:String) {
+  projectsCollection(where:{slug:$slug}) {
+    items {
+      sys{
+        id
+      }
+      languages
+      title
+      description
+      imagesCollection{
+        items{
+          url
+        }
+      }
+    }
+  }
+}
+`;

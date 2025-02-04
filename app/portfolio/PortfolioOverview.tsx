@@ -8,7 +8,6 @@ import ProjectList from './ProjectList';
 function PortfolioOverview() {
     const { data, loading, error } = useProjects();
     const projects = data?.projectsCollection.items;
-    console.log(projects);
     return (
         <Loader timer={500}>
             <div className='max-w-[1200px] m-auto'>

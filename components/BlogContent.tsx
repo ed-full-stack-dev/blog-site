@@ -13,7 +13,6 @@ interface BlogContentProps {
 
 export default function BlogContent({ slug }: BlogContentProps) {
   const { data, loading, error } = useBlogPost(slug);
-  console.log('data', data?.allBlogTitles?.items);
   const blog = data?.blogCollection?.items[0];
   const readTime = useMemo(() => blog?.body?.json && calculateReadTime(blog.body.json), [blog]);
 
@@ -46,7 +45,7 @@ export default function BlogContent({ slug }: BlogContentProps) {
 } = blog;
 
   return (
-    <div  key={id}>
+    <main  key={id} className="max-w-4xl mx-auto px-4 py-8">
       <BlogHeader
                 title={title}
                 author={author}
@@ -61,6 +60,6 @@ export default function BlogContent({ slug }: BlogContentProps) {
                 tags={tags}
             />
             <RelatedArticles currentSlug={slug} allBlogTitles={data?.allBlogTitles?.items} />
-    </div>
+    </main>
   );
 }
