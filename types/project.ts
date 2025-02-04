@@ -4,6 +4,9 @@ type ProjectImage = {
   };
   
   export type Project = {
+    sys: {
+      id: string;
+    };
     title: string;
     slug: string;
     extras: string[];

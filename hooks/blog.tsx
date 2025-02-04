@@ -1,11 +1,24 @@
 import { useQuery } from "@apollo/client";
 import client from "@/lib/apollo-client";
-// import Blog, { BlogCollection, UseBlogPostResult, UseBlogsResult } from "../types/blog";
-import { BLOG_QUERY_CONTENT, BLOGS_QUERY, PROJECTS_QUERY } from "@/queries";
+import { BLOG_QUERY_CONTENT, BLOGS_QUERY, PROJECT_QUERY_CONTENT, PROJECTS_QUERY } from "@/queries";
 import Blog, { BlogCollection, UseBlogPostResult, UseBlogsResult } from "@/types/blog";
-import { ProjectsCollection } from "@/types/project";
+import { Project, ProjectsCollection } from "@/types/project";
 
 
+export async function fetchProject(slug: string): Promise<Project | undefined> {
+
+  try {
+    const result = await client.query<{ projectsCollection: { items: Project[] } }>({
+      query: PROJECT_QUERY_CONTENT,
+      variables: { slug }
+    })
+    const project = result?.data?.projectsCollection?.items?.[0];
+    return project
+  } catch (error) {
+    console.log('Error fetching the project!', error);
+    return undefined;
+  }
+}
 
 export async function fetchBlogPost(slug: string): Promise<Blog | undefined> {
   try {
@@ -26,7 +39,7 @@ export async function fetchBlogPost(slug: string): Promise<Blog | undefined> {
 }
 
 export function useProjects() {
-  const { data, loading, error } = useQuery<{projectsCollection: ProjectsCollection;}>(PROJECTS_QUERY);
+  const { data, loading, error } = useQuery<{ projectsCollection: ProjectsCollection; }>(PROJECTS_QUERY);
   return { data, loading, error };
 }
 export function useBlogPosts(): UseBlogsResult {
