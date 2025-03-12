@@ -7,6 +7,7 @@ import React from "react";
 
 import type { Metadata } from "next";
 import { homePageMetaData } from "@/utils/metadata";
+import HomeContainer from "@/components/home-page/HomeContainer";
 
 export const metadata: Metadata = homePageMetaData;
 // interface SocialLink {
@@ -133,12 +134,10 @@ export const metadata: Metadata = homePageMetaData;
 //   </main>
 // );
 
-
+import '@/styles/home-page.css'
 function Home() {
   return(
-    <main>
-      <h1>Home!</h1>
-    </main>
+    <HomeContainer />
   )
 }
 export default Home;
