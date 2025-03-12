@@ -1,7 +1,7 @@
 import ApolloProvider from "@/lib/ApolloProvider";
 import "../styles/globals.css";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+// import Footer from "@/components/footer";
+import Header from "@/components/layout/header";
 
 export default function RootLayout({
   children,
@@ -12,11 +12,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body>
+      <body className=" max-w-[1600px] mx-auto ">
         <ApolloProvider>
           <Header />
-          <div className=" max-w-[1600px] mx-auto ">{children}</div>
-          <Footer />
+          <div>{children}</div>
+          {/* <Footer /> */}
           </ApolloProvider>
       </body>
     </html>
