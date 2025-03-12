@@ -1,5 +1,5 @@
 'use client'
-// import ImageGallerySection from "./ImageGallerySection";
+
 import { useBlogPosts } from "@/hooks/blog";
 import ImageGallerySection from "./ImageGallerySection";
 import IntroSection from "./IntroSection";

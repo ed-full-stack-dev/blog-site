@@ -57,7 +57,7 @@
 /* Content Section */
 
 .content {
-    @apply my-24 w-full grid grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2;
+    @apply my-24 w-full grid grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2 lg:px-24;
 }
 
 .content__articles {
@@ -69,7 +69,7 @@
 }
 
 .contact__container {
-    @apply space-y-10 lg:pl-16 xl:pl-24;
+    @apply space-y-10 lg:pl-16 xl:pl-24 lg:pr-8;
 }
 
 .contact-form {
