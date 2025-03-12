@@ -1,4 +1,12 @@
 
+.aspect-9\/10 {
+    aspect-ratio: 9/10;
+}
+
+.aspect-square {
+    aspect-ratio: 1;
+}
+
 .home-page {
     @apply   flex flex-col;
 }
@@ -25,9 +33,11 @@
 .social-icon {
     @apply text-3xl text-neutral-300 hover:text-teal-500 transition-colors duration-200;
 }
-/* 
+
+/* Image Gallery Section */
+
 .image-gallery {
-    @apply my-16 sm:mt-20;
+    @apply mt-16 sm:mt-20;
 }
 
 .image-gallery-wrapper {
@@ -42,13 +52,7 @@
     @apply absolute inset-0 h-full w-full object-cover;
 }
 
-.image-gallery__item--rotate-2 {
-    @apply rotate-2;
-}
 
-.image-gallery__item--rotate--2 {
-    @apply -rotate-2;
-} */
 
 /* Content Section */
 

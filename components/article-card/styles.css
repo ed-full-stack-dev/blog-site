@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+.article-card {
+    @apply border-2 border-gray-100 rounded-lg p-3 hover:bg-zinc-50 transition-colors duration-200;
+}
+
+.article-card__title {
+    @apply text-base font-semibold tracking-tight text-zinc-800;
+}
+
+.article-card__description {
+    @apply relative z-10 mt-2 text-sm text-zinc-600;
+}
+
+.article-card__footer {
+    @apply mt-4;
+}
+
+.article-card__read-more {
+    @apply flex items-center text-sm font-medium text-teal-500;
+}
+
+.article-card__icon {
+    @apply h-6 w-6 text-teal-500;
+}
