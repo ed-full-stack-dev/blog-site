@@ -3,10 +3,10 @@ import Img2 from './images/traveling.jpg';
 import Img3 from './images/domore.jpg';
 import Img4 from './images/music.jpg';
 import Img5 from './images/discovery.jpg';
-import airbnb from './icons/airbnb.svg';
-import facebook from './icons/facebook.svg';
-import planetaria from './icons/planetaria.svg';
-import starbucks from './icons/starbucks.svg';
+import upsCapital from './icons/ups-capital.svg';
+import blankSpace from './icons/blank-space.svg';
+import dugo from './icons/dugo.svg';
+import cboed from './icons/cbed.svg';
 export const imageGallery = [
     { src: Img1, alt: 'Coding' },
     { src: Img2, alt: 'Traveling' },
@@ -17,8 +17,8 @@ export const imageGallery = [
 
 
 export const workIcons = [
-    { src: planetaria, alt: 'Planetaria', startDate: '2019', endDate: String(new Date().getFullYear()), position: 'CEO' },
-    { src: airbnb, alt: 'Airbnb', startDate: '2014', endDate: '2019', position: 'Product Designer' },
-    { src: facebook, alt: 'Facebook', startDate: '2011', endDate: '2014', position: 'iOS Software Engineer' },
-    { src: starbucks, alt: 'Starbucks', startDate: '2008', endDate: '2011', position: 'Shift Supervisor' }
+    { src: dugo, alt: 'Dugo', startDate: '2019', endDate: String(new Date().getFullYear()), position: 'Full Stack Developer' },
+    { src: upsCapital, alt: 'UPS Capital', startDate: '2014', endDate: '2019', position: 'Front End Developer' },
+    { src: blankSpace, alt: 'Blank Space', startDate: '2011', endDate: '2014', position: 'Junior Front End Developer' },
+    { src: cboed, alt: 'Calgary Board of Education', startDate: '2008', endDate: '2011', position: 'TA' }
 ];
