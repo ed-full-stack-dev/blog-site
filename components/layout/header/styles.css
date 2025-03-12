@@ -28,7 +28,7 @@
 }
 
 .header__nav-items {
-    @apply flex rounded-full bg-white/90 px-3 text-lg font-medium text-zinc-800 ring-1 shadow-lg dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10;
+    @apply flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 ring-1 shadow-lg dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10;
 }
 
 .header__nav-link {
