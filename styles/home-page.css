@@ -57,7 +57,7 @@
 /* Content Section */
 
 .content {
-    @apply w-full grid grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2;
+    @apply my-24 w-full grid grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2;
 }
 
 .content__articles {
