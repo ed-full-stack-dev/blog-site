@@ -45,7 +45,7 @@ function DesktopNavigation({ isActive, setIsMenuOpen }: NavigationProps) {
     return (
         <nav className="header__nav" aria-label="Main Navigation">
             <ul className="header__nav-items">
-                {[{ label: "Home", link: '' }, { label: "Articles", link: 'blog' }, { label: "Projects", link: "projects" }, { label: "Uses", link: "uses" }].map((item) => {
+                {[{ label: "Home", link: '' }, { label: "Articles", link: 'blog' }].map((item) => {
                     const link = `/${item.link}` as string;
                     return (
                         <li key={link}>
@@ -70,7 +70,7 @@ export function MobileNavigation({ isActive, setIsMenuOpen }: NavigationProps) {
     return (
         <nav className="header__mobile-nav">
             <ul className="header__mobile-nav-items">
-                {[{ label: "Home", link: '' }, { label: "Articles", link: 'blog' }, { label: "Projects", link: "projects" }, { label: "Uses", link: "uses" }].map((item) => {
+                {[{ label: "Home", link: '' }, { label: "Articles", link: 'blog' }].map((item) => {
                     const link = `/${item.link}` as string;
                     return (
                         <li key={link}>
