@@ -12,7 +12,7 @@ export default function Footer() {
                                     <nav className="footer__nav">
                                         <li className="footer__nav-list"></li>
                                         {
-                                           [ { label: "Home", link: '' }, { label: "Articles", link: 'blog' }, { label: "Projects", link: "projects" }, { label: "Uses", link: "uses" }].map((item, index) =>(
+                                           [ { label: "Home", link: '' }, { label: "Articles", link: 'blog' }].map((item, index) =>(
                                             <Link key={item.label + index + item.link} href={`/${item.link}`} className="footer__nav-link" >{item.label}</Link>
                                            ))
                                         }

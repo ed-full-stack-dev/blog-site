@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
-import Logo from '@/assets/icons/logo.png';
+import Logo from '@/assets/icons/logo.svg';
 import './styles.css'
 
 function Header() {

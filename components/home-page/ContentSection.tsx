@@ -9,14 +9,16 @@ type Props = {
         blogCollection: BlogCollection;
     }
 }
-export default function ContentSection({data}:Props) {
+export default function ContentSection({ data }: Props) {
+    console.log(data)
 
     return (
         <div className="content">
             <div className="content__articles">
                 {
-                    data && data.blogCollection.items.slice(0,5).map((blg) =>(
-                        <ArticleCard key={blg.sys.id} date={new Date(blg.date).getDate().toString()} formattedDate={new Date(blg.date).toDateString()} title={blg.title} description={blg.summary} />
+                    data && data.blogCollection.items.slice(0, 5).map((blg) => (
+                        <ArticleCard key={blg.sys.id}
+                            blog={blg} />
                     ))
                 }
             </div>
