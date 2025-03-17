@@ -16,7 +16,7 @@ function Header() {
       <Link href="/" className="flex items-center space-x-2">
         <div className="relative w-auto h-10 md:h-16">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.svg"
             alt="Logo"
             width={200}
             height={60}

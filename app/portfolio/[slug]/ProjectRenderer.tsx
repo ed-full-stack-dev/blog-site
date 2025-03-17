@@ -19,14 +19,16 @@ const projectComponents: Record<string, React.FC> = {
 export default function ProjectRenderer({ slug }: ProjectRendererProps) {
     const ComponentToRender = projectComponents[slug]
     return (
-        <main>
-            <Show when={ComponentToRender} fallback={<p>No project found with slug: {slug}</p>}>
-                {() => (
-                    <Loader timer={500}>
-                        <ComponentToRender />
-                    </Loader>
-                )}
-            </Show>
-        </main>
+        <Loader timer={500}>
+            <main>
+                <Show when={ComponentToRender} fallback={<p>No project found with slug: {slug}</p>}>
+                    {() => (
+                        <Loader timer={500}>
+                            <ComponentToRender />
+                        </Loader>
+                    )}
+                </Show>
+            </main>
+        </Loader>
     );
 }

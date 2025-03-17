@@ -17,8 +17,8 @@ export const imageGallery = [
 
 
 export const workIcons = [
-    { src: dugo, alt: 'Dugo', startDate: '2019', endDate: String(new Date().getFullYear()), position: 'Full Stack Developer' },
-    { src: upsCapital, alt: 'UPS Capital', startDate: '2014', endDate: '2019', position: 'Front End Developer' },
-    { src: blankSpace, alt: 'Blank Space', startDate: '2011', endDate: '2014', position: 'Junior Front End Developer' },
-    { src: cboed, alt: 'Calgary Board of Education', startDate: '2008', endDate: '2011', position: 'TA' }
+    { src: dugo, alt: 'Dugo', startDate: '2021', endDate: String(new Date().getFullYear()), position: 'Full Stack Developer' },
+    { src: upsCapital, alt: 'UPS Capital', startDate: '2019', endDate: '2020', position: 'Front End Developer' },
+    { src: blankSpace, alt: 'Blank Space', startDate: '2018', endDate: '2019', position: 'Front End Developer' },
+    { src: cboed, alt: 'Calgary Board of Education', startDate: '2013', endDate: '2017', position: 'TA' }
 ];

@@ -20,7 +20,7 @@ export default function Avatar({ src, alt = "", initials, square = false, classN
       )}
     >
       {src ? (
-        <Image placeholder="empty" src={src} alt={alt} width={64} height={64} className="object-cover w-full h-full" />
+        <Image placeholder="empty" src={src} alt={alt} width={64} height={64} className="object-cover w-full h-full" style={{ height: "auto", width: "auto" }} />
       ) : (
         <span className="text-lg">{initials}</span>
       )}

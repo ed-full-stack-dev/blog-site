@@ -35,6 +35,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
             className={`w-full ${imgHeight} object-cover`}
             width={500}
             height={500}
+            style={{ height: "auto", width: "auto" }}
           />
         </div>
       )}
