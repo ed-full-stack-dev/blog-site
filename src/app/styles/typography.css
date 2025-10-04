@@ -14,10 +14,10 @@
   --shiki-token-string-expression: var(--color-neutral-300);
   --shiki-token-punctuation: var(--color-neutral-400);
 
-  :where(.typography > *) {
-    margin-top: --spacing(6);
-    margin-bottom: --spacing(6);
-  }
+  /* :where(.typography > *) {
+    margin-top: --spacing(1);
+    margin-bottom: --spacing(1);
+  } */
 
   /* Headings */
   :where(h1) {
